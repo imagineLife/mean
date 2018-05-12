@@ -5,7 +5,12 @@ const db = mongojs('mongodb://jakeLaursen:Jake8Snake6@ds133964.mlab.com:33964/my
 
 //GET
 router.get('/tasks', (req,res,next) => {
-	res.send('tasks page')
+	db.tasks.find((err, tasks) => {
+		if(err){
+			res.send(err)
+		}
+		res.json(tasks)
+	})
 })
 
 module.exports = router;
