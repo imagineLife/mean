@@ -1,0 +1,9 @@
+const express = require('express');
+const router = express.Router();
+
+//GET
+router.get('/tasks', (req,res,next) => {
+	res.send('tasks page')
+})
+
+module.exports = router;
