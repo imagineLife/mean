@@ -2,7 +2,7 @@
 	"name": "myTaskList",
 	"version": "1.0.0",
 	"scripts":{
-		"start":"tsc && concurrently \ "tsc -w\" \"lit-server\" ",
+		"start":"tsc && concurrently \"tsc -w\" \"lit-server\" ",
 		"lite": "lite-server",
 		"postinstall": "typings install",
 		"tcs": "tsc",
