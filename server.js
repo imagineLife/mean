@@ -1,33 +1,29 @@
-const express = require('express');
-const path = require('path');
-const bp = require('body-parser');
+var express = require('express');
+var path = require('path');
+var bodyParser = require('body-parser');
 
-const indexRoute = require('./routes/index');
-const apiRoute = require('./routes/tasks');
+var index = require('./routes/index');
+var tasks = require('./routes/tasks');
 
-const port = 3000;
+var port = 3000;
 
-const app = express();
+var app = express();
 
-//view engine
+//View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-//enable rendering html files
 app.engine('html', require('ejs').renderFile);
 
-//set static folder
+// Set Static Folder
 app.use(express.static(path.join(__dirname, 'client')));
 
-//Body Parser MiddleWare
-app.use(bp.json());
-app.use(bp.urlencoded({extended: false}));
+// Body Parser MW
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
-//create routes
-app.use('/', indexRoute);
-app.use('/api', apiRoute);
+app.use('/', index);
+app.use('/api', tasks);
 
-//listen for server running
-app.listen(port, () => {
-	console.log('server running on port ',port);
+app.listen(port, function(){
+    console.log('Server started on port '+port);
 });
